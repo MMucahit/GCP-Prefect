@@ -9,3 +9,13 @@ prefect deployment apply etl_parent_flow-deployment.yaml
   ## Push metadata to Prefect API
 prefect agent start -q 'default'
   ## Start agent
+
+## If we want to use python for create block and deployment
+cd blocks python docker_block.py
+  ## Create docker block
+cd flows python docker_deployment.py
+  ## Create deployment
+prefect agent start -q default
+  ## Start agent
+prefect deployment run etl-parent-flow/docker-flow -p "months=[1,2,3]"
+  ## Run deployment with custom parameter(s)
