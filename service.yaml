@@ -1,0 +1,11 @@
+If encounter error when write to bq, 
+  have to adjust wsl time to ntpdate time.google.com
+  
+prefect server start
+
+prefect deployment build ./parameterized.py:etl_parent_flow -n "Parameterized ETL"
+  ## Create deployment
+prefect deployment apply etl_parent_flow-deployment.yaml
+  ## Push metadata to Prefect API
+prefect agent start -q 'default'
+  ## Start agent
